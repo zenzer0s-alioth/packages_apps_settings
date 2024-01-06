@@ -655,4 +655,6 @@ public class Settings extends SettingsActivity {
     }
     public static class SafetyCenterActivity extends SettingsActivity { }
     public static class BatteryShareSettingsActivity extends SettingsActivity {}
+    // RefreshRate
+    public static class ScreenRefreshRateActivity extends SettingsActivity {}
 }
