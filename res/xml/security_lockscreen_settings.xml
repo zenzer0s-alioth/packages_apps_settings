@@ -94,6 +94,12 @@
             android:title="@string/lockscreen_double_line_clock_setting_toggle"
             android:summary="@string/lockscreen_double_line_clock_summary"
             settings:controller="com.android.settings.display.LockscreenClockPreferenceController" />
+
+        <com.android.settings.custom.preference.SystemSettingSwitchPreference
+            android:key="lockscreen_show_carrier"
+            android:title="@string/status_bar_carrier_lock_screen_title"
+            android:summary="@string/status_bar_carrier_lock_screen_summary"
+            android:defaultValue="true" />
     </PreferenceCategory>
 
     <PreferenceCategory
