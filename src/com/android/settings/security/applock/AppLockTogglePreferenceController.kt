@@ -17,32 +17,29 @@
 package com.android.settings.security.applock;
 
 import android.content.Context
-import android.widget.Switch
 
 import androidx.preference.Preference
 import androidx.preference.PreferenceScreen
 
 import com.android.settings.R
 import com.android.settings.core.TogglePreferenceController
-import com.android.settingslib.widget.MainSwitchPreference
-import com.android.settingslib.widget.OnMainSwitchChangeListener
 
 abstract class AppLockTogglePreferenceController(
     context: Context,
     key: String,
 ) : TogglePreferenceController(context, key),
-    OnMainSwitchChangeListener {
+    Preference.OnPreferenceChangeListener {
 
     override fun displayPreference(screen: PreferenceScreen) {
         super.displayPreference(screen)
         val preference = screen.findPreference<Preference>(preferenceKey) ?: return
-        if (preference is MainSwitchPreference) {
-            preference.addOnSwitchChangeListener(this)
-        }
+        preference.onPreferenceChangeListener = this
     }
 
-    override fun onSwitchChanged(switchView: Switch, isChecked: Boolean) {
+    override fun onPreferenceChange(preference: Preference, newValue: Any): Boolean {
+        val isChecked = newValue as? Boolean ?: return false
         setChecked(isChecked)
+        return true
     }
 
     override fun getSliceHighlightMenuRes() = R.string.menu_key_security
