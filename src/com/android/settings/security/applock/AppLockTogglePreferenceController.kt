@@ -18,7 +18,6 @@ package com.android.settings.security.applock;
 
 import android.content.Context
 
-import androidx.preference.Preference
 import androidx.preference.PreferenceScreen
 
 import com.android.settings.R
@@ -27,20 +26,7 @@ import com.android.settings.core.TogglePreferenceController
 abstract class AppLockTogglePreferenceController(
     context: Context,
     key: String,
-) : TogglePreferenceController(context, key),
-    Preference.OnPreferenceChangeListener {
-
-    override fun displayPreference(screen: PreferenceScreen) {
-        super.displayPreference(screen)
-        val preference = screen.findPreference<Preference>(preferenceKey) ?: return
-        preference.onPreferenceChangeListener = this
-    }
-
-    override fun onPreferenceChange(preference: Preference, newValue: Any): Boolean {
-        val isChecked = newValue as? Boolean ?: return false
-        setChecked(isChecked)
-        return true
-    }
+) : TogglePreferenceController(context, key) {
 
     override fun getSliceHighlightMenuRes() = R.string.menu_key_security
 }

@@ -52,8 +52,7 @@ class AppLockPackageConfigFragment : DashboardFragment() {
             requireActivity(),
             this,
             header?.findViewById(R.id.entity_header)
-        ).setRecyclerView(listView, settingsLifecycle)
-            .setPackageName(packageInfo.packageName)
+        ).setPackageName(packageInfo.packageName)
             .setButtonActions(
                 EntityHeaderController.ActionType.ACTION_NONE,
                 EntityHeaderController.ActionType.ACTION_NONE
@@ -72,7 +71,7 @@ class AppLockPackageConfigFragment : DashboardFragment() {
         AppLockHideAppPC(context, packageInfo.packageName, lifecycleScope)
     )
 
-    override fun getMetricsCategory(): Int = MetricsProto.MetricsEvent.CUSTOM
+    override fun getMetricsCategory(): Int = MetricsProto.MetricsEvent.VIEW_UNKNOWN
 
     override protected fun getPreferenceScreenResId() = R.xml.app_lock_package_config_settings
 

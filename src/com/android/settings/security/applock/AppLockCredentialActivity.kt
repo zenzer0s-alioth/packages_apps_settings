@@ -74,7 +74,7 @@ class AppLockCredentialActivity : FragmentActivity() {
 
         override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
             waitingForBiometricCallback = false
-            appLockManager.unlockPackage(packageName)
+            packageName?.let { appLockManager.unlockPackage(it) }
             ConfirmDeviceCredentialUtils.checkForPendingIntent(this@AppLockCredentialActivity)
             setResult(Activity.RESULT_OK)
             finish()
