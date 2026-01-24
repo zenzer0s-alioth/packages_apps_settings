@@ -60,7 +60,7 @@ class AppLockPackageConfigFragment : DashboardFragment() {
             .bindHeaderButtons()
             .setLabel(appEntry)
             .setIcon(appEntry)
-            .done(requireActivity(), false /* rebindActions */)
+            .done(false /* rebindActions */)
     }
 
     override protected fun createPreferenceControllers(
