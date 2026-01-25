@@ -201,7 +201,6 @@
         <SwitchPreferenceCompat
             android:key="data_disabled_icon"
             android:title="@string/data_disabled_icon_title"
-            android:icon="@drawable/ic_statusbar_data_disabled"
             android:defaultValue="true"/>
 
         <SwitchPreferenceCompat
