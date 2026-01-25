@@ -94,8 +94,7 @@
         android:key="app_lock"
         android:title="@string/app_lock_title"
         android:summary="@string/summary_placeholder"
-        android:order="14"
-        settings:controller="com.android.settings.security.applock.AppLockSettingsPreferenceController" />
+        android:order="14" />
 
     <Preference
         android:key="hibernated_apps"

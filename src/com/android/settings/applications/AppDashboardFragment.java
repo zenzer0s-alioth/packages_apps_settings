@@ -27,6 +27,7 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.settings.R;
 import com.android.settings.applications.appcompat.UserAspectRatioAppsPreferenceController;
 import com.android.settings.dashboard.DashboardFragment;
+import com.android.settings.security.applock.AppLockSettingsPreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.widget.PreferenceCategoryController;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -44,9 +45,11 @@ public class AppDashboardFragment extends DashboardFragment {
     private static final String TAG = "AppDashboardFragment";
     private static final String ADVANCED_CATEGORY_KEY = "advanced_category";
     private static final String ASPECT_RATIO_PREF_KEY = "aspect_ratio_apps";
+    private static final String APP_LOCK_PREF_KEY = "app_lock";
     private AppsPreferenceController mAppsPreferenceController;
 
-    private static List<AbstractPreferenceController> buildPreferenceControllers(Context context) {
+    private static List<AbstractPreferenceController> buildPreferenceControllers(
+            Context context, AppDashboardFragment host) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new AppsPreferenceController(context));
 
@@ -56,6 +59,12 @@ public class AppDashboardFragment extends DashboardFragment {
                 new AdvancedAppsPreferenceCategoryController(context, ADVANCED_CATEGORY_KEY);
         advancedCategoryController.setChildren(List.of(aspectRatioAppsPreferenceController));
         controllers.add(advancedCategoryController);
+
+        // App Lock controller needs host and lifecycle
+        if (host != null) {
+            controllers.add(new AppLockSettingsPreferenceController(
+                    context, APP_LOCK_PREF_KEY, host, host.getSettingsLifecycle()));
+        }
         return controllers;
     }
 
@@ -103,7 +112,7 @@ public class AppDashboardFragment extends DashboardFragment {
 
     @Override
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        return buildPreferenceControllers(context);
+        return buildPreferenceControllers(context, this);
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
@@ -119,7 +128,7 @@ public class AppDashboardFragment extends DashboardFragment {
                 @Override
                 public List<AbstractPreferenceController> createPreferenceControllers(
                         Context context) {
-                    return buildPreferenceControllers(context);
+                    return buildPreferenceControllers(context, null);
                 }
             };
 }
