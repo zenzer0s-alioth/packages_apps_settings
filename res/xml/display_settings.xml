@@ -199,6 +199,12 @@
             settings:controller="com.android.settings.display.PeakRefreshRatePreferenceController"/ -->
 
         <SwitchPreferenceCompat
+            android:key="data_disabled_icon"
+            android:title="@string/data_disabled_icon_title"
+            android:icon="@drawable/ic_statusbar_data_disabled"
+            android:defaultValue="true"/>
+
+        <SwitchPreferenceCompat
             android:key="show_operator_name"
             android:title="@string/show_operator_name_title"
             android:summary="@string/show_operator_name_summary"/>
