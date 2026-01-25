@@ -18,7 +18,10 @@ package com.android.settings.applications;
 
 import android.app.settings.SettingsEnums;
 import android.content.Context;
+import android.content.Intent;
 import android.provider.SearchIndexableResource;
+
+import androidx.activity.result.ActivityResultLauncher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +37,8 @@ import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.search.SearchIndexable;
 
+import com.android.settings.mica.KeyboxDataPreference;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -47,12 +52,12 @@ public class AppDashboardFragment extends DashboardFragment {
     private static final String ADVANCED_CATEGORY_KEY = "advanced_category";
     private static final String ASPECT_RATIO_PREF_KEY = "aspect_ratio_apps";
     private static final String KEYBOX_DATA_KEY = "keybox_data_setting";
-    private static final String PIF_DATA_KEY = "pif_data_setting";
+
         private static final String APP_LOCK_PREF_KEY = "app_lock";
     private ActivityResultLauncher<Intent> mKeyboxFilePickerLauncher;
-    private ActivityResultLauncher<Intent> mPifFilePickerLauncher;
+
     private KeyboxDataPreference mKeyboxDataPreference;
-    private PifDataPreference mPifDataPreference;
+
     private AppsPreferenceController mAppsPreferenceController;
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
