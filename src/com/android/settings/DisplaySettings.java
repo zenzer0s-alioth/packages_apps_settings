@@ -26,7 +26,6 @@ import androidx.annotation.Nullable;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.display.BrightnessLevelPreferenceController;
 import com.android.settings.display.CameraGesturePreferenceController;
-import com.android.settings.display.DataDisabledIconPreferenceController;
 import com.android.settings.display.DisplayScreen;
 import com.android.settings.display.LiftToWakePreferenceController;
 import com.android.settings.display.ShowOperatorNamePreferenceController;
